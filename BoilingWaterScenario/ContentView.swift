@@ -31,18 +31,10 @@ struct ContentView: View {
                 .multilineTextAlignment(.leading)
             
             Button(action: {
-                kpa = (5 * Int(temperatureEntry)! - 400)
+                kpa = 5 * Int(temperatureEntry)! - 400
                 
                 print(kpa)
-                
-                if kpa < 99 {
-                    feedback = "Above sea level"
-//                } else if (kpa != 0) : 100 {
-//                    feedback = "Sea level"
-                    
-                } else if kpa > 101 {
-                    feedback = "Below sea level"
-                }
+               
                 
             }, label: {
                 Text("Run formula")
@@ -51,6 +43,23 @@ struct ContentView: View {
             
             Text("\(kpa)")
             
+            Button(action: {
+                if kpa < 99 {
+                    feedback = "Above sea level"
+//                } else if (kpa != 0) : 100 {
+//                    feedback = "Sea level"
+                    
+                } else if kpa > 101 {
+                    feedback = "Below sea level"
+                }
+            }, label: {
+                Text("Above or below sea level?")
+            })
+                .buttonStyle(.bordered)
+            
+            Text(feedback)
+                .italic()
+                .padding()
         }
     }
 }
